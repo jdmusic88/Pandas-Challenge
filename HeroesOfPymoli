@@ -121,7 +121,6 @@ SN_summary['Total Purchase Value'] = SN_summary['Total Purchase Value'].astype(f
 SN_summary.head()
 
 #Most Popular Items
-
 #Create new data with items related, then group by id and item name
 item_group = purchase_data.groupby(['Item ID', 'Item Name'])
 #Count the number of purchases
@@ -140,6 +139,7 @@ print(item_summary.head(20).mean())
 print(item_summary.head(20).sum()/item_summary.sum())
 item_summary.head()
 
+#Most Profitable Item
 item_summary.sort_values('Total Purchase Value',ascending=False,inplace=True)
 item_summary['Item Price'] = item_summary['Item Price'].astype(float).map('${:.2f}'.format)
 item_summary['Total Purchase Value'] = item_summary['Total Purchase Value'].map('${:.2f}'.format)

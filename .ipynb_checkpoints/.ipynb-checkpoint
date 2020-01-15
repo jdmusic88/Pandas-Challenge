@@ -1,0 +1,359 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "# Dependencies and Setup\n",
+    "import pandas as pd\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# File to Load (Remember to Change These)\n",
+    "file_to_load = \"purchase_data.csv\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "[Errno 2] File b'purchase_data.csv' does not exist: b'purchase_data.csv'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-12-77e431cee61a>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Read Purchasing File and store into Pandas data frame\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mpurchase_data\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfile_to_load\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m~/opt/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py\u001b[0m in \u001b[0;36mparser_f\u001b[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)\u001b[0m\n\u001b[1;32m    683\u001b[0m         )\n\u001b[1;32m    684\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 685\u001b[0;31m         \u001b[0;32mreturn\u001b[0m \u001b[0m_read\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    686\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    687\u001b[0m     \u001b[0mparser_f\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__name__\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mname\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/opt/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py\u001b[0m in \u001b[0;36m_read\u001b[0;34m(filepath_or_buffer, kwds)\u001b[0m\n\u001b[1;32m    455\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    456\u001b[0m     \u001b[0;31m# Create the parser.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 457\u001b[0;31m     \u001b[0mparser\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mTextFileReader\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfp_or_buf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    458\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    459\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mchunksize\u001b[0m \u001b[0;32mor\u001b[0m \u001b[0miterator\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/opt/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[0;34m(self, f, engine, **kwds)\u001b[0m\n\u001b[1;32m    893\u001b[0m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"has_index_names\"\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mkwds\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"has_index_names\"\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    894\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 895\u001b[0;31m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_make_engine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mengine\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    896\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    897\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mclose\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/opt/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py\u001b[0m in \u001b[0;36m_make_engine\u001b[0;34m(self, engine)\u001b[0m\n\u001b[1;32m   1133\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m_make_engine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mengine\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m\"c\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1134\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"c\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1135\u001b[0;31m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_engine\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mCParserWrapper\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0moptions\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1136\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1137\u001b[0m             \u001b[0;32mif\u001b[0m \u001b[0mengine\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"python\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/opt/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py\u001b[0m in \u001b[0;36m__init__\u001b[0;34m(self, src, **kwds)\u001b[0m\n\u001b[1;32m   1915\u001b[0m         \u001b[0mkwds\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"usecols\"\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0musecols\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1916\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1917\u001b[0;31m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_reader\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mparsers\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mTextReader\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msrc\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1918\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0munnamed_cols\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_reader\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0munnamed_cols\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1919\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32mpandas/_libs/parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader.__cinit__\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;32mpandas/_libs/parsers.pyx\u001b[0m in \u001b[0;36mpandas._libs.parsers.TextReader._setup_parser_source\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] File b'purchase_data.csv' does not exist: b'purchase_data.csv'"
+     ]
+    }
+   ],
+   "source": [
+    "# Read Purchasing File and store into Pandas data frame\n",
+    "purchase_data = pd.read_csv(file_to_load)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-3-21440daae9f9>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m#Player Count\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;31m# Use the length of list of screen name \"SN\", for total players.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0mTotal\u001b[0m\u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'SN'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mnunique\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      4\u001b[0m \u001b[0mTotal\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;31m#Create a data frame with total players\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#Player Count\n",
+    "# Use the length of list of screen name \"SN\", for total players.\n",
+    "Total= purchase_data['SN'].nunique()\n",
+    "Total\n",
+    "#Create a data frame with total players\n",
+    "pd.DataFrame({\"Total Players\": [Total]})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-4-db02b12c4214>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;31m# unique items\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0munique_items\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mlen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mpurchase_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Item ID'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0munique\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      5\u001b[0m \u001b[0;31m# avg price\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mavg_price\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Price'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmean\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#Purchasing Analysis Total\n",
+    "\n",
+    "# unique items\n",
+    "unique_items = len(purchase_data['Item ID'].unique())\n",
+    "# avg price\n",
+    "avg_price = purchase_data['Price'].mean()\n",
+    "# the count of purchases\n",
+    "purchases_count = purchase_data['Purchase ID'].count()\n",
+    "# revenue\n",
+    "Revenue = purchase_data['Price'].sum()\n",
+    "\n",
+    "# Create data frame to provide results\n",
+    "summary_df= pd.DataFrame({\"Number of Unique Items\":unique_items ,\n",
+    "                              \"Total Revenue\": [Revenue],\n",
+    "                              \"Number of Purchases\": [purchases_count],\n",
+    "                              \"Average Price\": [avg_price]})\n",
+    "\n",
+    "summary_df= summary_df.round(2)\n",
+    "summary_df [\"Average Price\"] = summary_df[\"Average Price\"].map(\"${:,.2f}\".format)\n",
+    "summary_df[\"Number of Purchases\"] = summary_df[\"Number of Purchases\"].map(\"{:,}\".format)\n",
+    "summary_df [\"Total Revenue\"] = summary_df[\"Total Revenue\"].map(\"${:,.2f}\".format)\n",
+    "summary_df = summary_df.loc[:,[\"Number of Unique Items\", \"Average Price\", \"Number of Purchases\", \"Total Revenue\"]]\n",
+    "\n",
+    "summary_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-5-64dd705fa0d2>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Gender Demographics\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mgender\u001b[0m\u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Gender'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mnunique\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0;31m#count total of screen name \"SN\" by gender\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mgender\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Percentage of Players'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mgender\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'SN'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m/\u001b[0m\u001b[0mTotal\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0;36m100\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmap\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'{:.2f}'\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mformat\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;31m# Total count by gender and divivde by total players\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "# Gender Demographics\n",
+    "gender= purchase_data.groupby('Gender').nunique()\n",
+    "#count total of screen name \"SN\" by gender\n",
+    "gender['Percentage of Players'] = ((gender['SN']/Total)*100).map('{:.2f}'.format)\n",
+    "# Total count by gender and divivde by total players \n",
+    "gender.rename(columns={\"SN\": \"Total Count\"},inplace=True)\n",
+    "# Provide and format the values sorted by total count in descending order \n",
+    "gender.sort_values('Total Count', ascending=False,inplace=True)\n",
+    "gender.filter(items=['Total Count', 'Percentage of Players'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-6-525b82d1e39d>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Purchasing Analysis (Gender)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;31m# Run basic math on purchase count, purchase price, avg. purchase total per individual etc. by gender\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0mpurchase_count\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Gender'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcount\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Purchase ID'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrename\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Total Purchase Value\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      4\u001b[0m \u001b[0msummary_price\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Gender'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmean\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Price'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrename\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Average Purchase Value\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "# Purchasing Analysis (Gender)\n",
+    "# Run basic math on purchase count, purchase price, avg. purchase total per individual etc. by gender\n",
+    "purchase_count = purchase_data.groupby('Gender').count()['Purchase ID'].rename(\"Total Purchase Value\")\n",
+    "summary_price = purchase_data.groupby('Gender').mean()['Price'].rename(\"Average Purchase Value\")\n",
+    "\n",
+    "\n",
+    "#Create new column for SN total:\n",
+    "purchase_data['SN Total'] = purchase_data.groupby(['SN'])['Price'].transform(sum)\n",
+    "tol_per_gender = purchase_data.drop_duplicates(subset='SN', keep='first').groupby('Gender').sum()['SN Total']\n",
+    "mean_per_person = purchase_data.drop_duplicates(subset='SN', keep='first').groupby('Gender').mean()['SN Total']\n",
+    "\n",
+    "# All desired values are in a series\n",
+    "gender_summary = pd.DataFrame({'Purchase Count':purchase_count, 'Avg Purchase Price': summary_price, 'Total Purchase Value':tol_per_gender,'Purchase Total Per Person':mean_per_person})\n",
+    "gender_summary.sort_values('Purchase Count',ascending=False, inplace=True)\n",
+    "print(gender_summary.loc['Male']/gender_summary.sum())\n",
+    "gender_summary['Avg Purchase Price'] = gender_summary['Avg Purchase Price'].map('${:.2f}'.format)\n",
+    "gender_summary['Total Purchase Value'] = gender_summary['Total Purchase Value'].map('${:,.2f}'.format)\n",
+    "gender_summary['Purchase Total Per Person'] = gender_summary['Purchase Total Per Person'].map('${:.2f}'.format)\n",
+    "gender_summary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-7-9052574ba81e>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0;31m# Sort and Caterogize age values into bins established above. Hint: use pd.cut()\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 7\u001b[0;31m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Age Group'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcut\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mpurchase_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Age'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mbins\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mage_bin\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlabels\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mgroup_names\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      8\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m \u001b[0;31m# Calculate the numbers and percentages by age group\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "# Age Demographics\n",
+    "# Establish bins for ages\n",
+    "age_bin = bins = [0, 9, 14, 19, 24, 29, 34, 39, 100]\n",
+    "group_names = [\"<10\", \"10-14\", \"15-19\", \"20-24\", \"25-29\", \"30-34\", \"35-39\", \"40+\"]\n",
+    "\n",
+    "# Sort and Caterogize age values into bins established above. Hint: use pd.cut()\n",
+    "purchase_data['Age Group'] = pd.cut(purchase_data['Age'], bins=age_bin, labels=group_names)\n",
+    "\n",
+    "# Calculate the numbers and percentages by age group\n",
+    "# Create a summary data frame to hold the results\n",
+    "# Display Age Category Demographics\n",
+    "# Format percentage with two decimal places \n",
+    "\n",
+    "ageGroup = purchase_data.groupby('Age Group').nunique()\n",
+    "ageGroup['Percentage of Players'] = ((ageGroup['SN']/Total)*100).map('{:.2f}'.format)\n",
+    "ageGroup.rename(columns={\"SN\": \"Total Count\"},inplace=True)\n",
+    "ageGroup.filter(items=['Total Count', 'Percentage of Players'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-8-dc3eabafd8b1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m#Count Purchases by age group\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mpurchase_count\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Age Group'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcount\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Purchase ID'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;31m#Provide summary of purchase price by age group\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0msummary_price\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'Age Group'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmean\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Price'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#Count Purchases by age group \n",
+    "purchase_count = purchase_data.groupby('Age Group').count()['Purchase ID']\n",
+    "\n",
+    "#Provide summary of purchase price by age group\n",
+    "summary_price = purchase_data.groupby('Age Group').mean()['Price']\n",
+    "\n",
+    "#Create new column for SN total: (already created in previous gender question)\n",
+    "tol_per_age = purchase_data.drop_duplicates(subset='SN', keep='first').groupby('Age Group').sum()['SN Total']\n",
+    "tol_per_person = purchase_data.drop_duplicates(subset='SN', keep='first').groupby('Age Group').mean()['SN Total']\n",
+    "\n",
+    "# All desired values are in a series\n",
+    "age_summary = pd.DataFrame({'Purchase Count':purchase_count, 'Avg Purchase Price': summary_price, 'Total Purchase Value':tol_per_age,'Purchase Total Per Person':tol_per_person})\n",
+    "age_summary['Avg Purchase Price'] = age_summary['Avg Purchase Price'].map('${:.2f}'.format)\n",
+    "age_summary['Total Purchase Value'] = age_summary['Total Purchase Value'].map('${:,.2f}'.format)\n",
+    "age_summary['Purchase Total Per Person'] = age_summary['Purchase Total Per Person'].map('${:.2f}'.format)\n",
+    "age_summary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'purchase_data' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-9-a7fd0bab8c60>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Top Spenders\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;31m# Run basic calculations to group puchase data by SN\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0mpurchase_count\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'SN'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Purchase ID'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcount\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      4\u001b[0m \u001b[0;31m#Calculate the avg price and purchase total\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0mavg_price\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpurchase_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'SN'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'Price'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmean\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'purchase_data' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "# Top Spenders\n",
+    "# Run basic calculations to group puchase data by SN\n",
+    "purchase_count = purchase_data.groupby('SN')['Purchase ID'].count()\n",
+    "#Calculate the avg price and purchase total\n",
+    "avg_price = purchase_data.groupby('SN')['Price'].mean()\n",
+    "sum_price = purchase_data.groupby('SN')['Price'].sum()\n",
+    "\n",
+    "# Display a preview of the summary data frame in currency\n",
+    "SN_summary = pd.DataFrame({'Purchase Count':purchase_count, 'Avg Purchase Price':avg_price, 'Total Purchase Value':sum_price})\n",
+    "SN_summary.sort_values('Total Purchase Value', ascending=False, inplace=True)\n",
+    "SN_summary['Avg Purchase Price'] = SN_summary['Avg Purchase Price'].astype(float).map('${:.2f}'.format)\n",
+    "SN_summary['Total Purchase Value'] = SN_summary['Total Purchase Value'].astype(float).map('${:.2f}'.format)\n",
+    "SN_summary.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Most Popular Items\n",
+    "\n",
+    "#Create new data with items related, then group by id and item name\n",
+    "item_group = purchase_data.groupby(['Item ID', 'Item Name'])\n",
+    "#Count the number of purchases\n",
+    "purchase_count = item_group['Purchase ID'].count()\n",
+    "#Find the item price and purchase value sum\n",
+    "item_price = item_group['Price'].mean()\n",
+    "total_purchase_value = item_group['Price'].sum()\n",
+    "\n",
+    "#Creata a data frame and sort values by descending order\n",
+    "item_summary = pd.DataFrame({'Purchase Count':purchase_count, 'Item Price':item_price,'Total Purchase Value':total_purchase_value})\n",
+    "item_summary.sort_values('Purchase Count',ascending=False, inplace=True)\n",
+    "print(item_summary.mean())\n",
+    "print(item_summary.median())\n",
+    "print(item_summary.sum())\n",
+    "print(item_summary.head(20).mean())\n",
+    "print(item_summary.head(20).sum()/item_summary.sum())\n",
+    "item_summary.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "item_summary.sort_values('Total Purchase Value',ascending=False,inplace=True)\n",
+    "item_summary['Item Price'] = item_summary['Item Price'].astype(float).map('${:.2f}'.format)\n",
+    "item_summary['Total Purchase Value'] = item_summary['Total Purchase Value'].map('${:.2f}'.format)\n",
+    "item_summary.head()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
